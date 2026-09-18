@@ -1,0 +1,14 @@
+services:
+  pastebin:
+    build: .
+    image: lighthouse.tohka.us/example-projects/pastebin-java:debian
+    container_name: pastebin-java-debian
+    ports:
+      - "8100:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 3s
+      start_period: 20s
+      retries: 5

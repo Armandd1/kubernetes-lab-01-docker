@@ -1,0 +1,9 @@
+services:
+  pastebin:
+    build: .
+    image: lighthouse.tohka.us/example-projects/pastebin-cpp:scratch
+    container_name: pastebin-cpp-scratch
+    ports:
+      - "8302:8080"
+    restart: unless-stopped
+    # No healthcheck: a scratch image has no shell, curl or wget.
