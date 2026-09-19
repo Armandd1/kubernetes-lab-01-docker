@@ -1,0 +1,14 @@
+services:
+  pastebin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pastebin-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - pastebin-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  pastebin-data:
